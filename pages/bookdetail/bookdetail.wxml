@@ -1,8 +1,22 @@
 <!--pages/bookdetail/bookdetail.wxml-->
-<swiper autoplay="false" class="swiper-view" autoplay='{{false}}'>
+<view class="page-count-view">
+  <text class="page-current-count">{{current_page}}</text> 
+  <text class="page-total-count">/ {{total_page}}</text>
+</view>
+<swiper autoplay="false" class="swiper-view" autoplay='{{false}}' current="{{currentReadPage}}" bindchange="changeBookPage">
   <block wx:for="{{picture_pages}}" wx:key='id' wx:for-item="item">
     <swiper-item class='swiper-item'>
-      <image src="{{base_img_url + item.picture_url_local}}" class="slide-image" mode="aspectFit"/>
+      <image src="{{base_img_url + item.picture_url_local}}" class="slide-image" mode="aspectFit" bindtap="preBooImage"/>
     </swiper-item>
   </block>
 </swiper>
+<view class="page-content">
+  <view class="en-view">{{enText}}</view>
+  <view class="cn-view">{{cnText}}</view>
+</view>
+
+<view class="play-view">
+  <image src="../../images/pre_page.png" class="pre-img" bindtap="preBook"></image>
+  <image src="{{play_img}}" class="play-img" bindtap="playBook"></image>
+  <image src="../../images/next_page.png" class="next-img" bindtap="nextBook"></image>
+</view>

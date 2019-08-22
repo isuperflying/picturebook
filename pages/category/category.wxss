@@ -15,14 +15,8 @@ page {
 .video-item {
   width: 50%;
   height: auto;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
   border-radius: 2px;
-  justify-content: center;
-  align-items: center;
   position: relative;
-  margin-bottom: 10rpx;
 }
 
 .vip-view {
@@ -30,13 +24,13 @@ page {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items:flex-start;
+  align-items: flex-start;
   justify-content: flex-start;
+  margin-bottom: 24rpx;
 }
 
 .video-cover {
   width: 92%;
-  height: 194rpx;
   border-radius: 6px;
   margin-left: 4%;
 }

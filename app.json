@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/bookdetail/bookdetail",
     "pages/category/category",
     "pages/videodetail/videodetail",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/bookdetail/bookdetail"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,11 +1,11 @@
 const app = getApp()
 
-var baseUrl = 'http://192.168.1.3:8899/'
+var baseUrl = 'http://192.168.80.97:8899/'
 
 var list = null
 var page = 1
 var pSize = 20
-
+var isEnd
 Page({
 
   /**
@@ -56,7 +56,7 @@ Page({
    */
   onLoad: function(options) {
     wx.setNavigationBarTitle({
-      title: '儿歌乐园',
+      title: '糖果绘本',
     })
     wx.showLoading({
       title: '加载中',
@@ -82,8 +82,21 @@ Page({
         wx.hideLoading()
         wx.stopPullDownRefresh();
         console.log(result.data.data)
+
+        if (page == 1) {
+          list = result.data.data;
+        } else {
+          if (list != null) {
+            list = list.concat(result.data.data);
+          }
+          if (result.data.data.length < 20) {
+            isEnd = true
+          }
+
+        }
+
         that.setData({
-          videolist: result.data.data
+          videolist: list
         })
       },
       fail: function (res) {
@@ -103,6 +116,9 @@ Page({
   },
 
   onReachBottom: function(e) {
+    if(page > 3){
+      return;
+    }
     page++;
     this.loadData();
   },
@@ -111,7 +127,7 @@ Page({
     var bid = e.currentTarget.dataset.bid
     console.log('bookid--->' + bid)
     wx.navigateTo({
-      url: '/pages/bookdetail/bookdetail?bid=' + bid
+      url: '/pages/bookdetail/bookdetail?bid=' + bid + '&title=' + e.currentTarget.dataset.title
     })
   },
 
@@ -132,15 +148,15 @@ Page({
 
   onShareAppMessage: function () {
     return {
-      title: '儿歌乐园，宝宝快乐的源泉!',
+      title: '糖果绘本，宝宝快乐的源泉!',
       path: '/pages/home/home',
       imageUrl: '/images/share_img.png'
     }
   },
 
   version: function () {
-    var text = '儿歌乐园所有内容都采集于网络,' +
-      '仅为网友提供信息交流的平台。儿歌乐园自身不控' +
+    var text = '糖果绘本所有内容都采集于网络,' +
+      '仅为网友提供信息交流的平台。糖果绘本自身不控' +
       '制、编辑或修改任何资源信息。如果正在使用的视频及其他的资源侵犯了你的' +
       '作品著作权，请个人或单位务必以书面的通讯方式向作者' +
       '提交权利通知。本程序一定积极配合下架资源处理。'

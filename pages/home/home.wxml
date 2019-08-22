@@ -19,7 +19,7 @@
     <text class='video-top'>精选推荐</text>
   </view>
   <block wx:for='{{videolist}}' wx:key='id' wx:for-item="item">
-    <view class='video-item' bindtap='bookdetail' data-bid='{{item.id}}' >
+    <view class='video-item' bindtap='bookdetail' data-bid='{{item.id}}' data-title='{{item.pb_name}}'>
       <view class='vip-view'>
           <image class='video-cover' src='{{base_img_url + item.cover_url_local}}' mode='aspectFill'></image>
           <image wx:if='{{item.is_vip == 1}}' class='vip-img' src='../../images/vip_icon.png'></image>
@@ -27,11 +27,11 @@
       <text class='video-title'>{{item.video_title}}</text>
     </view>
   </block>
-  <view class='bottom-view'>
+  <!-- <view class='bottom-view'>
     <text class='bottom-txt'>没有更多啦</text>
-  </view>
+  </view> -->
 </view>
 <view class='version-content'>
-  <text class='video-style'>儿歌乐园</text>
+  <text class='video-style'>糖果绘本</text>
   <text class='video-version' bindtap='version'>免责申明</text>
 </view>

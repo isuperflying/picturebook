@@ -1,6 +1,6 @@
 const app = getApp()
 
-var baseUrl = 'https://www.antleague.com/'
+var baseUrl = 'http://192.168.80.97:8899/'
 
 var list = null
 var page = 1
@@ -13,8 +13,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    base_img_url: baseUrl + 'smallimgs/',
-    base_video_url: baseUrl + 'videos/',
+    base_img_url: baseUrl + 'book_cover/',
+    base_video_url: baseUrl + 'book_mp3/',
     is_end: isEnd
   },
 
@@ -39,7 +39,7 @@ Page({
 
   loadData: function() {
     var that = this
-    let url = baseUrl + 'querybyage'
+    let url = baseUrl + 'booklist'
     wx.request({
       url: url,
       data: {
@@ -97,11 +97,11 @@ Page({
     }
   },
 
-  videodetail: function(e) {
-    var obj = e.currentTarget.dataset.item
-    var video_item = JSON.stringify(obj);
+  bookdetail: function (e) {
+    var bid = e.currentTarget.dataset.bid
+    console.log('bookid--->' + bid)
     wx.navigateTo({
-      url: '/pages/videodetail/videodetail?video_item=' + video_item
+      url: '/pages/bookdetail/bookdetail?bid=' + bid + '&title=' + e.currentTarget.dataset.title
     })
   },
 
