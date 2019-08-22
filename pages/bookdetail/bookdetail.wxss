@@ -1,0 +1,27 @@
+/* pages/bookdetail/bookdetail.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  background-color:white;
+}
+
+.swiper-view {
+  width: 100%;
+  height: 70%;
+}
+
+.swiper-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-image{
+  width: 98%;
+  height: 500rpx;
+}

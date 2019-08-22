@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/category/category",
+    "pages/videodetail/videodetail",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/bookdetail/bookdetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#66b9ff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white",
+    "onReachBottomDistance": 20
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx963826dfb4212295"
+  ],
+  "sitemapLocation": "sitemap.json"
+}

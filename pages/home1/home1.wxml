@@ -1,0 +1,47 @@
+
+<view class='list'>
+  <swiper style='height:{{sheight}}rpx;' indicator-dots="true" circular="true" autoplay="{{false}}" current='{{current_index}}' previous-margin="{{'50rpx'}}" next-margin="{{'50rpx'}}" bindchange="swiperChange">
+    <block wx:for="{{banner}}" wx:key="{{index}}">
+      <swiper-item>
+          <view class="slide-image-view-wrapper {{current_index == index ? 'active' : ''}}" style='height:{{swiper_height}}rpx;'>
+            <view class="slide-image-view" >
+                <image src="{{item.banner_url}}" class="slide-image" />
+            </view>
+          </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  
+</view>
+
+
+<view class='ages-view'>
+  <block wx:for='{{ageslist}}' wx:key='id' wx:for-item="item">
+      <view class='ages-item' bindtap='category' data-typeid='{{item.type}}' data-title='{{item.title}}'>
+        <image class='ages-img' src='{{item.img_url}}'></image>
+        <text class='ages-title'>{{item.title}}</text>
+      </view>
+  </block>
+</view>
+<view class='video-list'>
+  <view class='video-top-view'>
+    <view class='top-color'></view>
+    <text class='video-top'>精选推荐</text>
+  </view>
+  <block wx:for='{{videolist}}' wx:key='id' wx:for-item="item">
+    <view class='video-item' bindtap='videodetail' data-item='{{item}}'>
+      <view class='vip-view'>
+          <image class='video-cover' src='{{base_img_url + item.video_fover}}' mode='aspectFill'></image>
+          <image wx:if='{{item.is_vip == 1}}' class='vip-img' src='../../images/vip_icon.png'></image>
+      </view>
+      <text class='video-title'>{{item.video_title}}</text>
+    </view>
+  </block>
+  <view class='bottom-view'>
+    <text class='bottom-txt'>没有更多啦</text>
+  </view>
+</view>
+<view class='version-content'>
+  <text class='video-style'>儿歌乐园</text>
+  <text class='video-version' bindtap='version'>免责申明</text>
+</view>

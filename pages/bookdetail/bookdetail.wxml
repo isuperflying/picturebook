@@ -1,0 +1,8 @@
+<!--pages/bookdetail/bookdetail.wxml-->
+<swiper autoplay="false" class="swiper-view" autoplay='{{false}}'>
+  <block wx:for="{{picture_pages}}" wx:key='id' wx:for-item="item">
+    <swiper-item class='swiper-item'>
+      <image src="{{base_img_url + item.picture_url_local}}" class="slide-image" mode="aspectFit"/>
+    </swiper-item>
+  </block>
+</swiper>
