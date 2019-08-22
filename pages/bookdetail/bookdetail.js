@@ -1,11 +1,11 @@
 const app = getApp()
-var baseUrl = 'http://192.168.80.97:8899/'
+var baseUrl = 'http://192.168.1.3:8899/'
 var list = null
 var page = 1
 var pSize = 20
 var currentReadPage = 0;
 
-const innerAudioContext = wx.createInnerAudioContext()
+const innerAudioContext = null;
 var vowel_audio_src
 var isPlay = false
 var current_index;
@@ -102,26 +102,28 @@ Page({
 
 
   playMusic(src, loop = false) {
+    console.log('this.data.musicStatus--->' + this.data.musicStatus)
     if (this.data.musicStatus != "on") {
       this.stopMusic()
       return
     }
     isPlay = true
-    
-    innerAudioContext.src = src
-    innerAudioContext.loop = loop
-    innerAudioContext.play()
+    this.innerAudioContext = wx.createInnerAudioContext()
+    this.innerAudioContext.src = src
+    this.innerAudioContext.loop = loop
+    this.innerAudioContext.play()
 
     //播放结束
-    innerAudioContext.onEnded(() => {
+    this.innerAudioContext.onEnded(() => {
       isPlay = false
       this.setData({
         play_img: '../../images/btn_play_normal.png',
       })
     })
   },
-
+  
   stopMusic() {
+    console.log(this.innerAudioContext)
     if (this.innerAudioContext) {
       console.log('stop music --->')
       this.innerAudioContext.stop()
@@ -136,7 +138,7 @@ Page({
     this.data.musicStatus = "off"
     this.stopMusic();
     if (this.loopInnerAudioContext) {
-      this.loopInnerAudioContext.stop()
+      this.innerAudioContext.stop()
     }
     if (this.innerAudioContext) {
       this.innerAudioContext.stop();
@@ -156,6 +158,8 @@ Page({
   },
 
   preBook: function () {
+    this.stopMusic();
+    
     if (bookPages) {
       currentReadPage--
       if (currentReadPage > -1) {
@@ -167,6 +171,7 @@ Page({
   },
 
   nextBook: function () {
+    this.stopMusic();
     if (bookPages) {
       currentReadPage++
       if (currentReadPage < bookPages.length) {

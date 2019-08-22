@@ -7,9 +7,10 @@
   </swiper>
 <view class='ages-view'>
   <block wx:for='{{ageslist}}' wx:key='id' wx:for-item="item">
-      <view class='ages-item' bindtap='category' data-typeid='{{item.type}}' data-title='{{item.title}}'>
+      <view class="ages-item" bindtap="{{index==4?'newApp':'category'}}" data-typeid='{{item.type}}' data-title='{{item.title}}'>
         <image class='ages-img' src='{{item.img_url}}'></image>
         <text class='ages-title'>{{item.title}}</text>
+        <navigator class="nav-view"  wx:if='{{isUse && index ==4 }}' target="miniProgram" open-type="navigate" app-id="{{new_app_id}}" path="" extra-data="" version="release"></navigator>
       </view>
   </block>
 </view>

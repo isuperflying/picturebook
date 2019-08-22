@@ -1,6 +1,6 @@
 const app = getApp()
 
-var baseUrl = 'http://192.168.80.97:8899/'
+var baseUrl = 'http://192.168.1.3:8899/'
 
 var list = null
 var page = 1
@@ -12,43 +12,66 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isUse:true,
+    new_app_id: 'wx572fce5031dcef34',
     base_img_url: baseUrl + 'book_cover/',
     base_video_url: baseUrl + 'book_mp3/',
     banner: [
       { 'img_url': '../../images/bb1.jpg' }, 
       { 'img_url': '../../images/bb2.jpg' }, 
       { 'img_url': '../../images/bb3.jpg' }],
-    ageslist: [{
-        'type':'1',
-        'img_url': '../../images/0-1.png',
-        'title': '0-1岁'
+      ageslist: [{
+        'type':'0',
+      'img_url': '../../images/1-2.png',
+        'title': '2~6岁'
+      },
+      {
+        'type': '1',
+        'img_url': '../../images/2-3.png',
+        'title': '4~8岁'
       },
       {
         'type': '2',
-        'img_url': '../../images/1-2.png',
-        'title': '1-2岁'
+        'img_url': '../../images/3-4.png',
+        'title': '6~9岁'
       },
       {
         'type': '3',
-        'img_url': '../../images/2-3.png',
-        'title': '2-3岁'
+        'img_url': '../../images/4-5.png',
+        'title': '9岁+'
       },
       {
         'type': '4',
-        'img_url': '../../images/3-4.png',
-        'title': '3-4岁'
-      },
-      {
-        'type': '5',
-        'img_url': '../../images/4-5.png',
-        'title': '4-5岁'
-      },
-      {
-        'type': '6',
         'img_url': '../../images/5-6.png',
-        'title': '5-6岁'
-      },
+        'title': '更多'
+      }
     ]
+  },
+
+  compareVersion: function (v1, v2) {
+    v1 = v1.split('.')
+    v2 = v2.split('.')
+    var len = Math.max(v1.length, v2.length)
+
+    while (v1.length < len) {
+      v1.push('0')
+    }
+    while (v2.length < len) {
+      v2.push('0')
+    }
+
+    for (var i = 0; i < len; i++) {
+      var num1 = parseInt(v1[i])
+      var num2 = parseInt(v2[i])
+
+      if (num1 > num2) {
+        return 1
+      } else if (num1 < num2) {
+        return -1
+      }
+    }
+
+    return 0
   },
 
   /**
@@ -61,6 +84,19 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
+
+    var that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log('sdk version--->' + res.SDKVersion)
+        var result = that.compareVersion(res.SDKVersion, '2.0.7')
+        that.setData({
+          isUse: result >= 0 ? true : false,
+          clientHeight: res.windowHeight
+        })
+      },
+    })
+
     this.loadData();
   },
 
@@ -105,6 +141,17 @@ Page({
       }
     })
   },
+
+  newApp: function (e) {
+    if (this.data.isUse) {
+      return;
+    }
+    var that = this
+    wx.navigateToMiniProgram({
+      appId: that.data.new_app_id
+    })
+  },
+
 
   /**
      * 页面相关事件处理函数--监听用户下拉动作

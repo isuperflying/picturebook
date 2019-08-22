@@ -1,6 +1,6 @@
 const app = getApp()
 
-var baseUrl = 'http://192.168.80.97:8899/'
+var baseUrl = 'http://192.168.1.3:8899/'
 
 var list = null
 var page = 1
@@ -23,7 +23,7 @@ Page({
    */
   onLoad: function(options) {
     wx.setNavigationBarTitle({
-      title: options.type_name + '儿歌',
+      title: options.type_name + '绘本',
     })
     page = 1
     typeid = options.typeid
