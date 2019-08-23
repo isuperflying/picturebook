@@ -6,7 +6,7 @@
 <swiper autoplay="false" class="swiper-view" autoplay='{{false}}' current="{{currentReadPage}}" bindchange="changeBookPage">
   <block wx:for="{{picture_pages}}" wx:key='id' wx:for-item="item">
     <swiper-item class='swiper-item'>
-      <image src="{{base_img_url + item.picture_url_local}}" class="slide-image" mode="aspectFit" bindtap="preBooImage"/>
+      <image src="{{item.picture_url_server}}" class="slide-image" mode="aspectFit" bindtap="preBooImage"/>
     </swiper-item>
   </block>
 </swiper>
@@ -19,4 +19,36 @@
   <image src="../../images/pre_page.png" class="pre-img" bindtap="preBook"></image>
   <image src="{{play_img}}" class="play-img" bindtap="playBook"></image>
   <image src="../../images/next_page.png" class="next-img" bindtap="nextBook"></image>
+</view>
+
+
+<!--开通VIP会员-->
+<view class="modal-vip-mask" catchtouchmove="preventTouchMove" bindtap='hideVipModal' wx:if="{{showVipModal}}"></view>
+<view class="modal-vip-dialog" wx:if="{{showVipModal}}">
+    <view class='modal-vip-top'>
+      <view class="modal-vip-title">开学特惠</view>
+      <view class="old-price-view"><text class="old-price-txt">原价：</text><text class="old-price-num">59.9</text></view>
+      <view class='line-vip-view'></view>
+      <view class='vip-remark'>开通会员，即可阅读所有绘本</view>
+      <view class='viy-buy'>
+         <button class="vip-buy-btn" bindgetuserinfo='userLogin' open-type='getUserInfo'>购买VIP会员</button>
+      </view>
+      <image src='../../images/vip_price.png' class='vip-price'></image>
+      <image src='../../images/top_close.png' class='top-vip-close' bindtap='hideVipModal'></image>
+    </view>
+</view>
+
+
+<!--阅读完成 -->
+<view class="modal-mask" catchtouchmove="preventTouchMove" bindtap='hideModal' wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+    <view class='modal-top'>
+      <image src="../../images/read_over.png" class="read-over-img"></image>
+      <text class="read-over-txt">太棒了!</text>
+      <text class="read-hit-content">恭喜你，你已读完一本</text>
+      <view class="share-view">
+        <button class="btn-continue" bindtap='hideModal'>继续阅读</button>
+        <button class="btn-share" open-type="share">分享给好友</button>
+      </view>
+    </view>
 </view>

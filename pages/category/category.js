@@ -1,6 +1,6 @@
 const app = getApp()
 
-var baseUrl = 'http://192.168.1.3:8899/'
+var baseUrl = 'https://www.antleague.com/picturebook/'
 
 var list = null
 var page = 1
@@ -107,7 +107,7 @@ Page({
 
   onShareAppMessage: function() {
     return {
-      title: '儿歌乐园，宝宝的快乐源泉!',
+      title: '糖果绘本，让宝宝快乐阅读!',
       path: '/pages/home/home',
       imageUrl: '/images/share_img.png'
     }

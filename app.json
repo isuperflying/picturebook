@@ -2,6 +2,8 @@
   "pages": [
     "pages/home/home",
     "pages/bookdetail/bookdetail",
+    
+    
     "pages/category/category",
     "pages/videodetail/videodetail",
     "pages/index/index",

@@ -163,3 +163,33 @@ page {
   border-radius: 3px;
   border: 1px solid #aaa;
 }
+
+.float-view {
+  position: fixed;
+  z-index: 101;
+  right: 20rpx;
+  bottom: 100rpx;
+}
+
+.float-view-wrapper {
+  width: 150rpx;
+  height: 150rpx;
+  position: relative;
+}
+
+.float-iamge {
+  width: 150rpx;
+  height: 150rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.share-friend {
+  width: 150rpx;
+  height: 150rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}

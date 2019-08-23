@@ -22,7 +22,7 @@
   <block wx:for='{{videolist}}' wx:key='id' wx:for-item="item">
     <view class='video-item' bindtap='bookdetail' data-bid='{{item.id}}' data-title='{{item.pb_name}}'>
       <view class='vip-view'>
-          <image class='video-cover' src='{{base_img_url + item.cover_url_local}}' mode='aspectFill'></image>
+          <image class='video-cover' src='{{item.cover_url_server}}' mode='aspectFill'></image>
           <image wx:if='{{item.is_vip == 1}}' class='vip-img' src='../../images/vip_icon.png'></image>
       </view>
       <text class='video-title'>{{item.video_title}}</text>
@@ -32,7 +32,15 @@
     <text class='bottom-txt'>没有更多啦</text>
   </view> -->
 </view>
+
 <view class='version-content'>
   <text class='video-style'>糖果绘本</text>
   <text class='video-version' bindtap='version'>免责申明</text>
+</view>
+
+<view class='float-view'>
+  <view class="float-view-wrapper">
+    <image class='float-iamge' src='../../images/logo.png' mode='widthFix'></image>
+    <button class="share-friend" open-type='share'></button>
+  </view>
 </view>

@@ -1,6 +1,6 @@
 const app = getApp()
 
-var baseUrl = 'http://192.168.1.3:8899/'
+var baseUrl = 'https://www.antleague.com/picturebook/'
 
 var list = null
 var page = 1
@@ -17,9 +17,7 @@ Page({
     base_img_url: baseUrl + 'book_cover/',
     base_video_url: baseUrl + 'book_mp3/',
     banner: [
-      { 'img_url': '../../images/bb1.jpg' }, 
-      { 'img_url': '../../images/bb2.jpg' }, 
-      { 'img_url': '../../images/bb3.jpg' }],
+      { 'img_url': '../../images/bb1.png' }],
       ageslist: [{
         'type':'0',
       'img_url': '../../images/1-2.png',
@@ -195,7 +193,7 @@ Page({
 
   onShareAppMessage: function () {
     return {
-      title: '糖果绘本，宝宝快乐的源泉!',
+      title: '糖果绘本，让宝宝快乐阅读!',
       path: '/pages/home/home',
       imageUrl: '/images/share_img.png'
     }
